@@ -4,13 +4,13 @@ import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
+// import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import reactjsAdminlte from 'adminlte-reactjs';
 // import {
 //   TextInput,
 //   TextEditor,
 // } from './FormComponents';
-
+console.log(reactjsAdminlte);
 const formStyles = {
   textInputContainer: {
     height: '50px',

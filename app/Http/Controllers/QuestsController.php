@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Quest;
+use \Input;
 use Illuminate\Http\Request;
+use \Unisharp\FileApi\FileApi;
 
 class QuestsController extends Controller
 {
+    protected $uploadPath = '/uploads/quests';
+
     public function index(Request $req) {
         return Quest::with('goals.savingsGoal')->get();
     }
@@ -31,5 +35,19 @@ class QuestsController extends Controller
         $quest->delete();
 
         return response()->json(null, 204);
+    }
+
+    public function uploadIcon(Request $req, Quest $quest) {
+        $fa = new FileApi($this->uploadPath);
+        $file = $fa->save($req->files->get('image'));
+        $quest->update([ 'icon' => $file ]);
+
+        return $quest;
+    }
+
+    public function icon(Request $req, Quest $quest) {
+        $fa = new FileApi($this->uploadPath);
+
+        return $fa->getResponse($quest->icon);
     }
 }

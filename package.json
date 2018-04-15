@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@coreui/react": "^1.0.10",
+    "adminlte-reactjs": "^1.0.6",
     "draft-js": "^0.10.5",
     "react-draft-wysiwyg": "^1.12.11",
     "react-fontawesome": "^1.6.1"

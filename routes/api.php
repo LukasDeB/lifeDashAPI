@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use \Unisharp\FileApi\FileApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+    'prefix' => 'upload',
+    'middleware' => ['cors'],
+], function() {
+    Route::post('/quests', 'QuestsController@uploadIcon');
 });
 
 Route::group([
@@ -47,4 +55,7 @@ Route::group([
     Route::post('/', 'QuestsController@create');
     Route::put('/{quest}', 'QuestsController@update');
     Route::delete('/{quest}', 'QuestsController@delete');
+
+    Route::post('/{quest}/uploadIcon', 'QuestsController@uploadIcon');
+    Route::get('/{quest}/icon', 'QuestsController@icon');
 });
