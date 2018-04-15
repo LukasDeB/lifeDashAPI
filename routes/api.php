@@ -56,6 +56,6 @@ Route::group([
     Route::put('/{quest}', 'QuestsController@update');
     Route::delete('/{quest}', 'QuestsController@delete');
 
-    Route::post('/{quest}/uploadIcon', 'QuestsController@uploadIcon');
     Route::get('/{quest}/icon', 'QuestsController@icon');
+    Route::post('/{quest}/icon', 'QuestsController@uploadIcon');
 });

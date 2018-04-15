@@ -13,7 +13,10 @@ return [
     |
     */
 
-    'path' => config('constants.filePaths'),
+    'path' => [
+        '/uploads/quests',
+        '/uploads/avatars',
+    ],
     // 'watermark' => 'public/img/watermark.png',
 
     'default_thumbs' => ['S' => '96x96', 'M' => '256x256', 'L' => '480x480'],
