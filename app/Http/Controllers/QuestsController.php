@@ -38,11 +38,15 @@ class QuestsController extends Controller
     }
 
     public function uploadIcon(Request $req, Quest $quest) {
-        $fa = new FileApi($this->uploadPath);
-        $file = $fa->save($req->files->get('image'));
-        $quest->update([ 'icon' => $file ]);
-
-        return $quest;
+        try {
+            $fa = new FileApi($this->uploadPath);
+            $file = $fa->save($req->files->get('image'));
+            $quest->update([ 'icon' => $file ]);
+    
+            return $quest;
+        } catch (\Error $err) {
+            dd($err);
+        }
     }
 
     public function icon(Request $req, Quest $quest) {
