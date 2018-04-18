@@ -52,6 +52,12 @@ class GoalsController extends Controller
         return response()->json($goal, 200);
     }
 
+    public function complete(Request $req, Goal $goal) {
+        $goal->update(['completed' => true]);
+
+        return $goal;
+    }
+    
     // ***************** //
     // GOAL TYPE SAVINGS //
     // ***************** //
