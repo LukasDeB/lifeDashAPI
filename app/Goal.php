@@ -36,7 +36,6 @@ class Goal extends Model
         }
 
         if(isset($quests) && !empty($quests)) {
-            dd($quests);
             foreach($quests as $quest) {
                 $quest->goals()->attach($goal->id);
             }
