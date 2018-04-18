@@ -22,8 +22,9 @@ class Goal extends Model
         }
 
         $goal = static::query()->create($attributes);
+        $typeGoal = [];
         switch($attributes['type']) {
-            case config('constants.goalTypes.savings'): {
+            case config('constants.goalTypes'): {
                 $typeGoal = SavingsGoal::create(array_merge(
                     ['goal_id' => $goal->id],
                     $attributes
@@ -35,6 +36,7 @@ class Goal extends Model
         }
 
         if(isset($quests) && !empty($quests)) {
+            dd($quests);
             foreach($quests as $quest) {
                 $quest->goals()->attach($goal->id);
             }

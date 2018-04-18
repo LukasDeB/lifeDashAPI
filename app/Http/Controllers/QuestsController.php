@@ -12,11 +12,11 @@ class QuestsController extends Controller
     protected $uploadPath = '/uploads/quests';
 
     public function index(Request $req) {
-        return Quest::with('goals.savingsGoal')->get();
+        return Quest::with('goals')->get();
     }
 
     public function show(Request $req, $id) {
-        return Quest::findOrFail($id);
+        return Quest::with('goals')->findOrFail($id);
     }
 
     public function create(Request $req) {
