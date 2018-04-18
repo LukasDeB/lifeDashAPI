@@ -39,6 +39,9 @@ Route::group([
     Route::post('/{goal}/subGoals', 'GoalsController@addSubGoal');
     Route::delete('/{goal}/subGoals/{subGoal}', 'GoalsController@removeSubGoal');
     
+    Route::get('/{goal}/fail', 'GoalsController@fail');
+    Route::get('/{goal}/complete', 'GoalsController@complete');
+    
     Route::put('/{goal}/addSavingsProgress', 'GoalsController@addSavingsProgress');
     
     Route::prefix('/subGoals')->group(function() {

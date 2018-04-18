@@ -19,9 +19,13 @@ class GoalsController extends Controller
     }
 
     public function create(Request $req) {
-        $goal = Goal::createType($req->all());
-
-        return response()->json($goal, 201);
+        try {
+            $goal = Goal::createType($req->all());
+    
+            return response()->json($goal, 201);
+        } catch(\Error $err) {
+            dd($err);
+        }
     }
 
     public function update(Request $req, Goal $goal) {
@@ -54,6 +58,12 @@ class GoalsController extends Controller
 
     public function complete(Request $req, Goal $goal) {
         $goal->update(['completed' => true]);
+
+        return $goal;
+    }
+
+    public function fail(Request $req, Goal $goal) {
+        $goal->update(['completed' => false]);
 
         return $goal;
     }
